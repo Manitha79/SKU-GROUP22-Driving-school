@@ -1,0 +1,5 @@
+STU-1001|Kamal Perera|kamal.p@gmail.com|0771234567|Auto Car (Class B)|12/A Flower Rd, Colombo 07|0719876543
+STU-1002|Nimal Silva|nimal.silva@yahoo.com|0712345678|Manual Car (Class B1)|45 Galle Rd, Dehiwala|0778899001
+STU-1003|Anusha Fernando|anusha.f@outlook.com|0763456789|Motorcycle (Class A)|89 Kandy Rd, Kiribathgoda|0723344556
+STU-1004|Dinushan R.K|dinushan.rk@drivingschool.lk|0784567890|Heavy Vehicle (Class C)|21 Station Rd, Gampaha|0751122334
+STU-1005|Saman Jayasuriya|saman.j@gmail.com|0705678901|Dual (Auto & Manual)|104 High Level Rd, Nugegoda|0776655443
