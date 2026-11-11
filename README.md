@@ -1,264 +1,195 @@
-# 🚗 Apex Driving School Management & Scheduling System
-> **SLIIT – Object-Oriented Programming (OOP) Coursework Project**  
-> **Group ID:** SKU-GROUP 22 | **Academic Year:** 2026  
+# 💳 Payment & Billing Management Module
+> **Apex Driving School System – SLIIT Object-Oriented Programming (OOP) Coursework**  
+> **Academic Year:** 2026 | **Group ID:** SKU-GROUP 22  
+> **Student Name:** Weerakkody M.R.B (Manitha)  
+> **Student ID:** `IT26101059`  
+> **Project Role:** Group Leader & Payment/Billing Component Lead  
+> **Feature Branch:** `payment-billing`  
+> **Pull Request Target:** `master`  
 
 [![Java](https://img.shields.io/badge/Java-17%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
-[![Jakarta EE](https://img.shields.io/badge/Jakarta_EE-10-F80000?style=for-the-badge&logo=jakartaee&logoColor=white)](https://jakarta.ee/)
-[![Apache Maven](https://img.shields.io/badge/Apache_Maven-3.8%2B-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)](https://maven.apache.org/)
-[![Apache Tomcat](https://img.shields.io/badge/Apache_Tomcat-10.1%2B-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black)](https://tomcat.apache.org/)
+[![Jakarta EE](https://img.shields.io/badge/Jakarta_Servlet-6.0-F80000?style=for-the-badge&logo=jakartaee&logoColor=white)](https://jakarta.ee/)
+[![JSP](https://img.shields.io/badge/JSP-3.0-007396?style=for-the-badge&logo=java&logoColor=white)](https://jakarta.ee/)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
+[![Git](https://img.shields.io/badge/Branch-payment--billing-F05032?style=for-the-badge&logo=git&logoColor=white)](https://github.com/Manitha79/SKU-GROUP22-Driving-school/tree/payment-billing)
 
 ---
 
-## 📌 1. Project Overview
+## 📌 1. Module Overview
 
-**Apex Driving School System** is a unified, enterprise-grade Java web application designed to automate and streamline the end-to-end operations of a modern driving academy. Built strictly under the **Model-View-Controller (MVC)** architectural pattern, it leverages **Jakarta EE 10 Servlets**, **JavaServer Pages (JSP)**, **JSTL**, and **robust file-based persistence** without requiring an external SQL database server.
+The **Payment & Billing Management Module** is the core financial engine of the Apex Driving School web application. It is solely designed, implemented, and maintained by **Weerakkody M.R.B (`IT26101059`)** on the `payment-billing` feature branch.
 
-The application connects six core business modules into a cohesive ecosystem featuring role-based authentication, interactive KPI dashboards, real-time input validation, and dedicated implementations of fundamental Object-Oriented Programming (OOP) concepts and Data Structures & Algorithms (DSA).
-
----
-
-## 👥 2. Group Members & Module Allocation
-
-All six group members have contributed dedicated modules developed in separate Git feature branches and integrated into the primary codebase:
-
-| # | Student Name | Student ID (IT No.) | Allocated Module & Role | Git Feature Branch | Dedicated Documentation | Key Contributions & Classes |
-|:---:|:---|:---:|:---|:---:|:---:|:---|
-| **1** | **Dinushan R.K** | `IT26101058` | **Student Management** | `student-it26101058` | [📖 Module 01 Guide](docs/01_Student_Management_IT26101058.md) | `Student.java`, `Person.java`, `StudentServlet.java`, `students.jsp` |
-| **2** | **Thanneliyadda** | `IT26101056` | **Lesson Scheduling & Queue** | `lesson-IT26101056` | [📖 Module 02 Guide](docs/02_Lesson_Scheduling_Queue_IT26101056.md) | `Lesson.java`, `LessonQueue.java` (FIFO Queue), `LessonServlet.java` |
-| **3** | **Kumarawansha W.K.R.D** | `IT26101057` | **Instructor Management & Sorting** | `feature/instructor-management` | [📖 Module 03 Guide](docs/03_Instructor_Management_BubbleSort_IT26101057.md) | `Instructor.java`, `BubbleSort.java` (Experience Sorting) |
-| **4** | **Senevirathna M.G.T.R** *(Thisara Rukshan)* | `IT26101055` | **Vehicle Fleet Management** | `IT26101055` | [📖 Module 04 Guide](docs/04_Vehicle_Management_IT26101055.md) | `Vehicle.java`, `VehicleServlet.java`, `vehicles.jsp` |
-| **5** | **Weerakkody M.R.B** *(Manitha – Group Leader)* | `IT26101059` | **Payment & Billing Management** | `payment-billing` | [📖 Module 05 Guide](docs/05_Payment_Billing_IT26101059.md) | `Payment.java`, `PaymentServlet.java`, `payments.jsp`, Invoicing |
-| **6** | **Sajan P.** | `IT26101060` | **Feedback, Dashboard & Security** | `member-6` | [📖 Module 06 Guide](docs/06_Feedback_Admin_IT26101060.md) | `Feedback.java`, `AuthFilter.java`, `dashboard.jsp`, UI Theme |
+This component automates:
+* **Student Tuition & Invoicing:** Generates unique invoices for driving packages and individual lesson fees.
+* **Multi-Method Payment Processing:** Supports `CASH`, `CARD`, and `ONLINE_TRANSFER` transactions.
+* **Financial Aggregation & KPIs:** Dynamically calculates total academy revenue, pending student dues, and transaction volumes for the executive dashboard.
+* **File-Based Persistence:** Serializes and deserializes payment ledger records in `data/payments.txt` via thread-safe I/O operations without requiring an external SQL database.
+* **Status Lifecycle Management:** Tracks each financial ledger entry through its lifecycle (`PAID`, `PENDING`, `REFUNDED`).
 
 ---
 
-## 🏛️ 3. System Architecture & Design Pattern
+## 📂 2. Files Contributed & Architecture
 
-The application is structured following the standard **MVC (Model-View-Controller)** architectural pattern to ensure clean separation of concerns:
+This feature branch strictly adheres to the **Model-View-Controller (MVC)** architectural design:
 
 ```
-                          ┌──────────────────────────┐
-                          │   Client Browser / JSP   │
-                          └─────────────┬────────────┘
-                                        │ HTTP Requests (GET/POST)
-                                        ▼
-                          ┌──────────────────────────┐
-                          │   AuthFilter (Security)  │
-                          └─────────────┬────────────┘
-                                        │ Authorized
-                                        ▼
-                          ┌──────────────────────────┐
-                          │  Servlets (Controllers)  │
-                          │ Student / Lesson / etc.  │
-                          └──────┬────────────┬──────┘
-             Reads / Modifies    │            │ Forwards Data (Request Scope)
-                                 ▼            ▼
-                   ┌──────────────────┐  ┌──────────────────┐
-                   │ Models & Services│  │    JSP Views     │
-                   │ Person, DataSvc  │  │ JSTL / Bootstrap │
-                   └─────────┬────────┘  └──────────────────┘
-                             │
-                             ▼ File I/O
-                   ┌──────────────────┐
-                   │ data/*.txt (DB)  │
-                   └──────────────────┘
+src/main/
+├── java/lk/drivingschool/
+│   ├── model/
+│   │   └── Payment.java              # [MODEL] Encapsulated domain entity
+│   ├── servlet/
+│   │   └── PaymentServlet.java       # [CONTROLLER] HTTP request routing & CRUD
+│   └── service/
+│       └── DataService.java          # [SERVICE] Payment aggregation & business logic
+└── webapp/WEB-INF/views/
+    └── payments.jsp                  # [VIEW] Responsive billing UI & revenue analytics
+data/
+└── payments.txt                      # [DATABASE] Persistent pipe-delimited ledger
 ```
 
-* **Model Layer (`lk.drivingschool.model`):** Pure Java Beans representing real-world domain entities (`Student`, `Instructor`, `Lesson`, `Vehicle`, `Payment`, `Feedback`).
-* **Controller Layer (`lk.drivingschool.servlet`):** Jakarta HTTP Servlets handling incoming client requests, parsing parameters, executing validations, and delegating to services.
-* **Service & Persistence Layer (`lk.drivingschool.service`, `lk.drivingschool.util`):** Centralized data handling via `DataService` and thread-safe `FileHandler` storing records in pipe-delimited text files (`|`).
-* **View Layer (`src/main/webapp/WEB-INF/views/`):** JSP presentation layer with modular layout fragments (`layout_header.jspf`, `layout_footer.jspf`), clean CSS variables, responsive tables, and modals.
+### Detailed File Responsibilities:
+| File | Layer | Primary Responsibility |
+|:---|:---:|:---|
+| **`Payment.java`** | Model | Encapsulates payment properties, defensive mutators, and serialization formatting. |
+| **`PaymentServlet.java`** | Controller | Intercepts `GET` (view ledger, filter by status) and `POST` (create invoice, update payment status). |
+| **`payments.jsp`** | View | Renders summary metric cards, registration modal, clean transaction tables, and status badges. |
+| **`payments.txt`** | Persistence | Flat-file store format: `PAY-ID\|STUDENT-ID\|AMOUNT\|DATE\|METHOD\|STATUS`. |
 
 ---
 
-## 💡 4. OOP & DSA Concepts Demonstrated (Viva Reference)
+## 💡 3. OOP Concepts Implemented in this Module
 
-### A. Object-Oriented Programming (OOP) Pillars
-1. **Inheritance:**  
-   * Base class `Person.java` encapsulates common personal attributes (`id`, `name`, `email`, `phone`).  
-   * `Student.java` and `Instructor.java` inherit from `Person`, adding module-specific attributes (`licenceType`, `emergencyContact` vs. `licenseCategory`, `experienceYears`).
-2. **Polymorphism:**  
-   * The abstract method `getRole()` in `Person` is polymorphically overridden:
-     * `Student.getRole()` returns `"STUDENT"`
-     * `Instructor.getRole()` returns `"INSTRUCTOR"`
-   * `toString()` is dynamically overridden for formatted logging across entities.
-3. **Encapsulation:**  
-   * Strict `private` field access modifiers across all models.
-   * Access is controlled through public getters, setters, and parameter validation routines preventing invalid object states.
-4. **Abstraction:**  
-   * The file persistence engine abstracts the mechanics of file reading, parsing, splitting, and writing behind clear public interfaces (`DataService.getAllStudents()`, `savePayment()`).
+### A. Encapsulation (Data Hiding & Validation)
+To maintain financial data integrity, all properties in `Payment.java` are strictly declared as `private`. Direct access is forbidden; state alterations must pass through validated accessor and mutator methods:
 
-### B. Data Structures & Algorithms (DSA)
-1. **Custom FIFO Queue (`LessonQueue.java` – Module 2):**  
-   * Implements a First-In-First-Out (FIFO) queue for driving lesson requests.
-   * Ensures fair scheduling: student lesson requests are queued based on submission timestamp and processed in exact arrival sequence (`enqueue()`, `dequeue()`, `peek()`).
-2. **Optimized Bubble Sort (`BubbleSort.java` – Module 3):**  
-   * Custom sorting algorithm used to rank instructors based on their years of driving experience.
-   * Features an early-termination optimization flag (`boolean swapped`): achieves $O(n)$ best-case time complexity when already sorted, and $O(n^2)$ worst-case.
-   * Supports both descending (senior instructors first) and ascending ordering.
+```java
+package lk.drivingschool.model;
 
----
+public class Payment {
+    private String id;
+    private String studentId;
+    private double amount;
+    private String paymentDate;
+    private String method; // CASH, CARD, ONLINE_TRANSFER
+    private String status; // PAID, PENDING, REFUNDED
 
-## 📦 5. Module Breakdown & Features
+    public Payment(String id, String studentId, double amount, 
+                   String paymentDate, String method, String status) {
+        this.id = id;
+        this.studentId = studentId;
+        setAmount(amount); // Enforces defensive boundary checking
+        this.paymentDate = paymentDate;
+        this.method = method;
+        this.status = status;
+    }
 
-### 🎓 Module 1: Student Management (`IT26101058 - Dinushan R.K`)
-* Complete CRUD operations (Register, View, Update, Delete) for driving school students.
-* Validation for National Identity / Student ID, phone number formatting, and license categories (Class A, B, B1, C).
-* Quick search and tabular view with emergency contact linkage.
+    // Defensive validation: Prevents zero or negative payment entries
+    public void setAmount(double amount) {
+        if (amount > 0) {
+            this.amount = amount;
+        } else {
+            throw new IllegalArgumentException("Payment amount must be greater than zero.");
+        }
+    }
 
-### 📅 Module 2: Lesson Scheduling & FIFO Queue (`IT26101056 - Thanneliyadda`)
-* Lesson booking interface connecting students, instructors, and available time slots.
-* Pending lesson bookings automatically enter the **Custom FIFO Queue** (`LessonQueue`).
-* Queue status badges: `CONFIRMED`, `PENDING_QUEUE`, `COMPLETED`, `CANCELLED`.
-* Dispatch queue controller allowing administrators to confirm queued lessons in chronological order.
+    public double getAmount() {
+        return this.amount;
+    }
 
-### 👨‍🏫 Module 3: Instructor Management & Ranking (`IT26101057 - Kumarawansha`)
-* Instructor registry capturing license categories, direct contact information, and teaching tenure.
-* **Bubble Sort Algorithm execution**: Interactive toggle to sort instructors by experience (Highest to Lowest / Lowest to Highest).
-* Display metrics showing swap counts and execution comparisons for viva demonstrations.
-
-### 🚙 Module 4: Vehicle Fleet Management (`IT26101055 - Senevirathna / Rukshan`)
-* Fleet tracking capturing registration numbers, model/make, transmission type (`AUTOMATIC`, `MANUAL`), and vehicle category.
-* Real-time operational lifecycle status badges: `AVAILABLE`, `IN_LESSON`, `MAINTENANCE`.
-* Quick status updates to prevent double-booking vehicles during active road sessions.
-
-### 💳 Module 5: Payment & Billing Management (`IT26101059 - Weerakkody / Manitha [Leader]`)
-* Invoicing and transaction logging linked to student accounts.
-* Support for payment methods: `CASH`, `CARD`, `ONLINE_TRANSFER`.
-* Real-time financial aggregation calculating Total Revenue, Pending Dues, and Collected Balances.
-* Printable invoice simulation and billing status tracking (`PAID`, `PENDING`, `REFUNDED`).
-
-### 📊 Module 6: Executive Dashboard, Feedback & Security (`IT26101060 - Sajan P.`)
-* **Executive Dashboard:** Aggregates live KPI cards summarizing key data points from all 6 modules.
-* **Student Feedback Engine:** Collects 5-star ratings and reviews with auto-calculated overall satisfaction index.
-* **Authentication & Authorization Filter (`AuthFilter`):** Intercepts requests, protects routes, and enforces role-based access for Admin, Instructor, and Student accounts.
-* Global UI Design System with unified headers, breadcrumbs, notifications, and responsive styling.
-
----
-
-## 📂 6. Directory Structure
-
-```
-TempDrive/
-├── data/                                 # Persistent text databases (pipe-delimited)
-│   ├── feedback.txt
-│   ├── instructors.txt
-│   ├── lessons.txt
-│   ├── payments.txt
-│   ├── students.txt
-│   └── vehicles.txt
-├── src/
-│   └── main/
-│       ├── java/
-│       │   └── lk/drivingschool/
-│       │       ├── datastructure/       # Custom Data Structures & Algorithms
-│       │       │   ├── BubbleSort.java  # Module 3: Instructor ranking
-│       │       │   └── LessonQueue.java # Module 2: FIFO lesson scheduling
-│       │       ├── model/               # OOP Domain Entities
-│       │       │   ├── Feedback.java
-│       │       │   ├── Instructor.java  # Extends Person
-│       │       │   ├── Lesson.java
-│       │       │   ├── Payment.java
-│       │       │   ├── Person.java      # Base abstract/superclass
-│       │       │   ├── Student.java     # Extends Person
-│       │       │   ├── UserRole.java
-│       │       │   └── Vehicle.java
-│       │       ├── service/             # Data aggregation & business logic
-│       │       │   └── DataService.java
-│       │       ├── servlet/             # Jakarta EE HTTP Controllers
-│       │       │   ├── AuthFilter.java  # Security gatekeeper
-│       │       │   ├── AuthServlet.java
-│       │       │   ├── FeedbackServlet.java
-│       │       │   ├── HomeServlet.java # Dashboard controller
-│       │       │   ├── InstructorServlet.java
-│       │       │   ├── LessonServlet.java
-│       │       │   ├── PaymentServlet.java
-│       │       │   ├── StudentServlet.java
-│       │       │   └── VehicleServlet.java
-│       │       └── util/                # File I/O persistence engine
-│       │           └── FileHandler.java
-│       └── webapp/                      # JSP Presentation Layer
-│           ├── css/
-│           │   └── style.css            # Minimalist custom styling
-│           ├── WEB-INF/
-│           │   └── views/               # JSP Views & Layout Fragments
-│           │       ├── dashboard.jsp
-│           │       ├── feedback.jsp
-│           │       ├── instructors.jsp
-│           │       ├── layout_footer.jspf
-│           │       ├── layout_header.jspf
-│           │       ├── lessons.jsp
-│           │       ├── login.jsp
-│           │       ├── payments.jsp
-│           │       ├── students.jsp
-│           │       └── vehicles.jsp
-│           └── index.jsp                # Welcome redirector
-├── pom.xml                              # Maven project configuration (Jakarta EE 10)
-├── build_war.bat                        # Automated Windows build script
-├── run_standalone.bat                   # Standalone execution helper
-└── README.md                            # Comprehensive project documentation
+    public String getId() { return id; }
+    public String getStudentId() { return studentId; }
+    public String getPaymentDate() { return paymentDate; }
+    public String getMethod() { return method; }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+}
 ```
 
----
+### B. Abstraction (Layered Separation of Concerns)
+* The `PaymentServlet` does not directly execute low-level file write operations.
+* File I/O mechanics (splitting pipes, reading lines, stream closing) are abstracted inside `FileHandler` and `DataService`.
+* The controller simply invokes high-level domain methods:
+  ```java
+  DataService.savePayment(newPayment);
+  List<Payment> payments = DataService.getAllPayments();
+  double totalRevenue = DataService.calculateTotalRevenue();
+  ```
 
-## ⚙️ 7. Prerequisites & Technology Stack
-
-* **Java Development Kit (JDK):** Version 17 or higher
-* **Build Tool:** Apache Maven 3.8+
-* **Web Container:** Apache Tomcat 10.1+ (Supports `jakarta.servlet` namespace)
-* **Web Technologies:** JSP 3.0, JSTL 3.0, Bootstrap 5.3, Bootstrap Icons 1.11
-* **Version Control:** Git & GitHub
-
----
-
-## 🚀 8. Build, Deploy & Run
-
-### Method A: Maven Command Line
-1. Open a terminal in the root folder of the project.
-2. Build and package the project into a `.war` file:
-   ```bash
-   mvn clean package
-   ```
-3. The packaged WAR will be generated at:
-   ```
-   target/DrivingSchoolSystem.war
-   ```
-4. Copy `target/DrivingSchoolSystem.war` into the `webapps/` directory of your Apache Tomcat 10.1+ installation.
-5. Start Tomcat (`bin/startup.bat` on Windows or `bin/startup.sh` on Linux/macOS).
-
-### Method B: Standalone Scripts (Windows)
-* Double-click `build_war.bat` to automatically invoke Maven and build the archive.
-* Double-click `run_standalone.bat` for fast local testing.
-
-### Method C: Accessing the Web Application
-Once the server is running, navigate to:
-```
-http://localhost:8080/DrivingSchoolSystem/
-```
+### C. State Pattern / Status Machine
+Payments adhere to strict operational states:
+* `PAID`: Transaction successfully processed and counted toward Total Revenue.
+* `PENDING`: Invoice issued to student, awaiting payment clearance.
+* `REFUNDED`: Cancelled lesson or course package with refunded funds.
 
 ---
 
-## 🔐 9. Default User Accounts (Role-Based Access)
+## 📊 4. Financial Calculations & Business Logic
 
-Use the following credentials on the login screen (`/login`) to explore different role perspectives:
+The module provides real-time mathematical aggregation across all records in `payments.txt`:
 
-| Role | Username | Password | Access Privileges |
-|:---|:---:|:---:|:---|
-| **System Administrator** | `admin` | `admin123` | Full access to all 6 modules, queue dispatching, payments, and student records |
-| **Driving Instructor** | `instructor` | `ins123` | Access to student roster, lesson schedules, and assigned vehicles |
-| **Enrolled Student** | `student` | `stu123` | View personal lessons, book new queue slots, view payments, and submit feedback |
+$$\text{Total Collected Revenue} = \sum_{i \in \text{PAID}} \text{Amount}_i$$
 
----
+$$\text{Outstanding Receivables} = \sum_{j \in \text{PENDING}} \text{Amount}_j$$
 
-## 🌿 10. Git Collaboration & Branching Strategy
-
-Our team followed professional Git practices throughout development:
-* **`master` / `main`:** Production-ready integrated codebase.
-* **Feature Branches:** Each member developed independently on an assigned branch (`student-it26101058`, `lesson-IT26101056`, `feature/instructor-management`, `IT26101055`, `payment-billing`, `member-6`).
-* **Pull Request Workflow:** Changes were reviewed, checked for merge conflicts, and integrated by the **Group Leader (`Manitha79`)**.
+These figures are computed on every `doGet` request and forwarded to `payments.jsp` and the executive `dashboard.jsp`.
 
 ---
 
-## 📜 11. License & Academic Integrity
-This project was developed for academic evaluation purposes as part of the **SLIIT Object-Oriented Programming (OOP) Module**. All rights reserved by **SKU-GROUP 22 (2026)**.
+## 🧪 5. Step-by-Step Viva Demonstration Script
+
+During your viva examination, follow this exact sequence to demonstrate your module to the evaluator:
+
+1. **Access the Module:**  
+   Open your browser and navigate to:  
+   👉 `http://localhost:8080/DrivingSchoolSystem/payments`
+
+2. **Demonstrate Dashboard KPI Cards:**  
+   Point out the top analytics row:
+   * **Total Revenue:** Show the formatted currency value (e.g., `LKR 115,000`).
+   * **Paid Transactions Count:** Point out the count of cleared payments.
+   * **Pending Payments Count:** Show overdue/pending student fees.
+
+3. **Demonstrate Adding a New Payment (CRUD - Create):**  
+   Click the **"Record New Payment"** button:
+   * **Student ID:** Select or enter `STU-1002` (Nimal Silva).
+   * **Amount:** Enter `25000.00`.
+   * **Payment Date:** Select current date.
+   * **Payment Method:** Choose `CARD`.
+   * **Status:** Select `PAID`.
+   * Click **"Save Payment"**.
+
+4. **Verify Real-Time Updates & Persistence:**  
+   * Show that the new payment immediately appears at the top of the table.
+   * Highlight that the **Total Revenue** KPI automatically incremented by `LKR 25,000`.
+   * Open `data/payments.txt` on your computer to prove to the lecturer that the record was permanently persisted to the file database.
+
+5. **Demonstrate Status Update / Voiding:**  
+   Toggle a payment status from `PENDING` to `PAID` or view the simulated invoice receipt.
+
+---
+
+## 🎯 6. High-Probability Viva Questions & Model Answers
+
+### Q1: What was your individual contribution to the group project?
+> **Answer:** "I am the Group Leader, and my individual technical component is **Module 05: Payment & Billing Management**. I developed the `Payment.java` domain model, the `PaymentServlet.java` controller, the `payments.jsp` user interface, and the revenue analytics logic in `DataService.java`, along with managing the Git repository and integrating my teammates' pull requests."
+
+### Q2: How did you implement Encapsulation in the Payment class?
+> **Answer:** "All fields such as `id`, `studentId`, `amount`, and `status` are declared `private` in `Payment.java`. I provided controlled public getters and setters. Specifically in `setAmount(double)`, I added defensive validation logic to ensure that zero or negative monetary values cannot be assigned to an invoice."
+
+### Q3: How is data stored without a relational database?
+> **Answer:** "We use flat-file persistence. In `data/payments.txt`, each transaction is stored as a pipe-delimited record:  
+> `PAY-5001|STU-1001|35000.0|2026-11-01|CARD|PAID`  
+> When the application loads, `FileHandler` reads the file line-by-line, parses the tokens, and instantiates `Payment` objects in memory."
+
+### Q4: Why is your branch named `payment-billing`?
+> **Answer:** "Following standard Git feature-branch workflow, each group member created an isolated feature branch named after their allocated coursework module. I developed and committed all payment features on `payment-billing`, verified its stability, and opened a Pull Request into `master` for clean integration."
+
+---
+
+## 🌿 7. Pull Request & Branch Details
+
+* **Author:** Weerakkody M.R.B (`IT26101059`)
+* **Email:** `IT26101059@my.sliit.lk`
+* **Feature Branch:** `payment-billing`
+* **Target Integration Branch:** `master`
+* **Commits:** 15+ descriptive atomic commits documenting iterative feature development.
