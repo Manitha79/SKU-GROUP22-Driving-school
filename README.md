@@ -22,14 +22,14 @@ The application connects six core business modules into a cohesive ecosystem fea
 
 All six group members have contributed dedicated modules developed in separate Git feature branches and integrated into the primary codebase:
 
-| # | Student Name | Student ID (IT No.) | Allocated Module & Role | Git Feature Branch | Key Contributions & Classes |
-|:---:|:---|:---:|:---|:---:|:---|
-| **1** | **Dinushan R.K** | `IT26101058` | **Student Management** | `student-it26101058` | `Student.java`, `Person.java`, `StudentServlet.java`, `students.jsp`, `data/students.txt` |
-| **2** | **Thanneliyadda** | `IT26101056` | **Lesson Scheduling & Queue** | `lesson-IT26101056` | `Lesson.java`, `LessonQueue.java` (Custom FIFO Queue), `LessonServlet.java`, `lessons.jsp`, `data/lessons.txt` |
-| **3** | **Kumarawansha W.K.R.D** | `IT26101057` | **Instructor Management & Sorting** | `feature/instructor-management` | `Instructor.java`, `BubbleSort.java` (Experience Ranking), `InstructorServlet.java`, `instructors.jsp`, `data/instructors.txt` |
-| **4** | **Senevirathna M.G.T.R** *(Thisara Rukshan)* | `IT26101055` | **Vehicle Fleet Management** | `IT26101055` | `Vehicle.java`, `VehicleServlet.java`, `vehicles.jsp`, `data/vehicles.txt` |
-| **5** | **Weerakkody M.R.B** *(Manitha – Group Leader)* | `IT26101059` | **Payment & Billing Management** | `payment-billing` | `Payment.java`, `PaymentServlet.java`, `payments.jsp`, `data/payments.txt`, Financial Analytics |
-| **6** | **Sajan P.** | `IT26101060` | **Feedback, Dashboard & Security** | `member-6` | `Feedback.java`, `FeedbackServlet.java`, `HomeServlet.java`, `AuthServlet.java`, `AuthFilter.java`, `UserRole.java`, `dashboard.jsp`, `login.jsp`, UI Theme |
+| # | Student Name | Student ID (IT No.) | Allocated Module & Role | Git Feature Branch | Dedicated Documentation | Key Contributions & Classes |
+|:---:|:---|:---:|:---|:---:|:---:|:---|
+| **1** | **Dinushan R.K** | `IT26101058` | **Student Management** | `student-it26101058` | [📖 Module 01 Guide](docs/01_Student_Management_IT26101058.md) | `Student.java`, `Person.java`, `StudentServlet.java`, `students.jsp` |
+| **2** | **Thanneliyadda** | `IT26101056` | **Lesson Scheduling & Queue** | `lesson-IT26101056` | [📖 Module 02 Guide](docs/02_Lesson_Scheduling_Queue_IT26101056.md) | `Lesson.java`, `LessonQueue.java` (FIFO Queue), `LessonServlet.java` |
+| **3** | **Kumarawansha W.K.R.D** | `IT26101057` | **Instructor Management & Sorting** | `feature/instructor-management` | [📖 Module 03 Guide](docs/03_Instructor_Management_BubbleSort_IT26101057.md) | `Instructor.java`, `BubbleSort.java` (Experience Sorting) |
+| **4** | **Senevirathna M.G.T.R** *(Thisara Rukshan)* | `IT26101055` | **Vehicle Fleet Management** | `IT26101055` | [📖 Module 04 Guide](docs/04_Vehicle_Management_IT26101055.md) | `Vehicle.java`, `VehicleServlet.java`, `vehicles.jsp` |
+| **5** | **Weerakkody M.R.B** *(Manitha – Group Leader)* | `IT26101059` | **Payment & Billing Management** | `payment-billing` | [📖 Module 05 Guide](docs/05_Payment_Billing_IT26101059.md) | `Payment.java`, `PaymentServlet.java`, `payments.jsp`, Invoicing |
+| **6** | **Sajan P.** | `IT26101060` | **Feedback, Dashboard & Security** | `member-6` | [📖 Module 06 Guide](docs/06_Feedback_Admin_IT26101060.md) | `Feedback.java`, `AuthFilter.java`, `dashboard.jsp`, UI Theme |
 
 ---
 
