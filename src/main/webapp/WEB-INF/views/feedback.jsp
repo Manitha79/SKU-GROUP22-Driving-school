@@ -58,13 +58,7 @@
                     </c:if>
 
                     <div class="mb-3">
-                        <label class="form-label-clean">Student</label>
-                        <select class="form-select-clean w-100" name="studentId" required>
-                            <option value="">-- Choose Student --</option>
-                            <c:forEach var="s" items="${students}">
-                                <option value="${s.id}" ${editItem.studentId eq s.id ? 'selected' : ''}>${s.name} (${s.id})</option>
-                            </c:forEach>
-                        </select>
+
                     </div>
 
                     <div class="mb-3">

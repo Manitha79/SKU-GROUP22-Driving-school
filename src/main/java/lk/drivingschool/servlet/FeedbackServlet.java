@@ -10,11 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Controller for Admin & Feedback Management.
- * Member 6: Sajan P. (Admin & Feedback)
- * Performs CRUD operations and tracks customer satisfaction.
- */
-@WebServlet(urlPatterns = {"/feedback", "/feedbacks", "/admin"})
+
 public class FeedbackServlet extends HttpServlet {
 
     @Override
@@ -43,7 +39,7 @@ public class FeedbackServlet extends HttpServlet {
 
         req.setAttribute("feedbacks", feedbacks);
         req.setAttribute("avgRating", DataService.getAverageRating());
-        req.setAttribute("students", DataService.getStudents());
+main
         req.getRequestDispatcher("/WEB-INF/views/feedback.jsp").forward(req, resp);
     }
 
@@ -84,7 +80,7 @@ public class FeedbackServlet extends HttpServlet {
             req.setAttribute("error", ex.getMessage());
             req.setAttribute("feedbacks", DataService.getFeedbacks());
             req.setAttribute("avgRating", DataService.getAverageRating());
-            req.setAttribute("students", DataService.getStudents());
+
             req.getRequestDispatcher("/WEB-INF/views/feedback.jsp").forward(req, resp);
         }
     }

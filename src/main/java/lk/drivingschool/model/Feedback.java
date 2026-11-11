@@ -2,10 +2,8 @@ package lk.drivingschool.model;
 
 /**
  * Feedback Model class.
- * Member 6: Sajan P. (Admin & Feedback)
- * OOP Concepts:
- * 1. Encapsulation: Private feedback attributes with getters and setters.
- * 2. Analytics: Used to compute customer satisfaction score.
+
+ * 2. Analytics: Usedhttps://github.com/Manitha79/SKU-GROUP22-Driving-school/pull/4/conflict?name=src%252Fmain%252Fjava%252Flk%252Fdrivingschool%252Fmodel%252FFeedback.java&base_oid=517b5c230149a7aa48aa07802697383d625dda72&head_oid=3f2e12851ece86c2db3e5300def5f405dd880e5d to compute customer satisfaction score.
  */
 public class Feedback {
     private String id;
