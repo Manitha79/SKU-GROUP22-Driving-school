@@ -1,0 +1,280 @@
+/* ==========================================================================
+   Apex Driving School Management System - Minimalist & Modern UI
+   Designed for Coursework Demonstration & Viva Defense
+   ========================================================================== */
+
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-subtle: #eff6ff;
+    --success: #16a34a;
+    --success-subtle: #f0fdf4;
+    --warning: #d97706;
+    --warning-subtle: #fffbeb;
+    --danger: #dc2626;
+    --danger-subtle: #fef2f2;
+    --info: #0891b2;
+    --info-subtle: #ecfeff;
+    --gray-bg: #f8fafc;
+    --gray-card: #ffffff;
+    --gray-border: #e2e8f0;
+    --gray-text: #334155;
+    --gray-muted: #64748b;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+}
+
+body {
+    background-color: var(--gray-bg);
+    color: var(--gray-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Minimalist Navbar */
+.navbar-clean {
+    background: #ffffff;
+    border-bottom: 1px solid var(--gray-border);
+    padding: 0.75rem 0;
+}
+
+.navbar-brand-custom {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #0f172a !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.navbar-brand-custom i {
+    color: var(--primary);
+}
+
+.nav-link-custom {
+    color: var(--gray-muted) !important;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.45rem 0.85rem !important;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease-in-out;
+}
+
+.nav-link-custom:hover {
+    color: var(--primary) !important;
+    background-color: var(--primary-subtle);
+}
+
+.nav-link-custom.active {
+    color: var(--primary) !important;
+    background-color: var(--primary-subtle);
+    font-weight: 600;
+}
+
+/* Viva Demo Badge at Top of Pages */
+.viva-badge-banner {
+    background-color: #ffffff;
+    border: 1px solid var(--gray-border);
+    border-left: 4px solid var(--primary);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.viva-badge-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.viva-concept-pill {
+    background: var(--primary-subtle);
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.25rem 0.65rem;
+    border-radius: 20px;
+    border: 1px solid rgba(37, 99, 235, 0.15);
+}
+
+/* Clean Cards */
+.card-clean {
+    background: #ffffff;
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.card-clean-header {
+    background: #ffffff;
+    border-bottom: 1px solid var(--gray-border);
+    padding: 0.85rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-clean-body {
+    padding: 1.25rem;
+}
+
+/* KPI Summary Cards on Dashboard */
+.kpi-card {
+    background: #ffffff;
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.kpi-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gray-muted);
+    margin-bottom: 0.25rem;
+}
+
+.kpi-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.2;
+}
+
+.kpi-member {
+    font-size: 0.75rem;
+    color: var(--gray-muted);
+    margin-top: 0.5rem;
+    display: block;
+}
+
+/* Minimalist Tables */
+.table-clean {
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 0.88rem;
+}
+
+.table-clean thead th {
+    background-color: #f8fafc;
+    color: var(--gray-muted);
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--gray-border);
+    white-space: nowrap;
+}
+
+.table-clean tbody td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--gray-border);
+    vertical-align: middle;
+}
+
+.table-clean tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-clean tbody tr:hover {
+    background-color: #fbfcfe;
+}
+
+/* Badges */
+.badge-clean {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.55rem;
+    border-radius: 4px;
+}
+
+.badge-clean-primary { background: var(--primary-subtle); color: var(--primary); }
+.badge-clean-success { background: var(--success-subtle); color: var(--success); }
+.badge-clean-warning { background: var(--warning-subtle); color: var(--warning); }
+.badge-clean-danger  { background: var(--danger-subtle); color: var(--danger); }
+.badge-clean-info    { background: var(--info-subtle); color: var(--info); }
+.badge-clean-gray    { background: #f1f5f9; color: var(--gray-muted); }
+
+/* Forms */
+.form-label-clean {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 0.35rem;
+}
+
+.form-control-clean, .form-select-clean {
+    font-size: 0.88rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-sm);
+    color: #0f172a;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control-clean:focus, .form-select-clean:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    outline: none;
+}
+
+/* Action Buttons */
+.btn-clean-primary {
+    background-color: var(--primary);
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: var(--radius-sm);
+    border: none;
+    transition: background-color 0.15s ease;
+}
+
+.btn-clean-primary:hover {
+    background-color: var(--primary-hover);
+    color: #ffffff;
+}
+
+.btn-clean-secondary {
+    background-color: #f1f5f9;
+    color: #334155;
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--gray-border);
+}
+
+.btn-clean-secondary:hover {
+    background-color: #e2e8f0;
+    color: #0f172a;
+}
