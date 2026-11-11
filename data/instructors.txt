@@ -1,0 +1,5 @@
+INS-2001|Sunil Bandara|0777112233|Car & Van|15|sunil.b@drivingschool.lk|ACTIVE
+INS-2002|Ruwan Jayawardena|0711223344|Motorcycle|4|ruwan.j@drivingschool.lk|ACTIVE
+INS-2003|Mahesh Wickramasinghe|0788334455|Heavy Vehicles|12|mahesh.w@drivingschool.lk|ACTIVE
+INS-2004|Pradeep Kumara|0766445566|Dual Purpose|8|pradeep.k@drivingschool.lk|ACTIVE
+INS-2005|Chaminda Vaas|0722556677|Car (Auto)|2|chaminda.v@drivingschool.lk|ON_LEAVE
