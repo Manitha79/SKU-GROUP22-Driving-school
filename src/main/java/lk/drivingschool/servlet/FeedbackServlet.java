@@ -10,11 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Controller for Customer Feedback & Reviews Management.
- * Member 6: Feedback Module
- * Performs CRUD operations and calculates customer satisfaction score.
- */
-@WebServlet(urlPatterns = {"/feedback", "/feedbacks"})
+
 public class FeedbackServlet extends HttpServlet {
 
     @Override
@@ -43,6 +39,7 @@ public class FeedbackServlet extends HttpServlet {
 
         req.setAttribute("feedbacks", feedbacks);
         req.setAttribute("avgRating", DataService.getAverageRating());
+main
         req.getRequestDispatcher("/WEB-INF/views/feedback.jsp").forward(req, resp);
     }
 
@@ -83,6 +80,7 @@ public class FeedbackServlet extends HttpServlet {
             req.setAttribute("error", ex.getMessage());
             req.setAttribute("feedbacks", DataService.getFeedbacks());
             req.setAttribute("avgRating", DataService.getAverageRating());
+
             req.getRequestDispatcher("/WEB-INF/views/feedback.jsp").forward(req, resp);
         }
     }

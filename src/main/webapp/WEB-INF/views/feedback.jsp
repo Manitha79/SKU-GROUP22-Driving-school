@@ -58,8 +58,7 @@
                     </c:if>
 
                     <div class="mb-3">
-                        <label class="form-label-clean">Student ID</label>
-                        <input class="form-control-clean w-100" name="studentId" value="<c:out value='${editItem.studentId}'/>" placeholder="e.g. STU-1001" required>
+
                     </div>
 
                     <div class="mb-3">

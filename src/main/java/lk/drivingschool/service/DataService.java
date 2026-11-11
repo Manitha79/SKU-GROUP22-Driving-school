@@ -13,7 +13,7 @@ package lk.drivingschool.service;
         return list;
     }
 
-
+ main
     public static double getAverageRating() {
         List<Feedback> list = getFeedbacks();
         if (list.isEmpty()) return 5.0;
@@ -24,7 +24,7 @@ package lk.drivingschool.service;
         return sum / list.size();
     }
 
-
+main
     public static void addFeedback(Feedback f) {
         String[] row = new String[]{f.getId(), f.getStudentId(), String.valueOf(f.getRating()), f.getComments(), f.getStatus()};
         FileHandler.append("feedback.txt", row);
