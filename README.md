@@ -168,25 +168,7 @@ During your viva examination, follow this exact sequence to demonstrate your mod
 
 ---
 
-## 🎯 6. High-Probability Viva Questions & Model Answers
-
-### Q1: What was your individual contribution to the group project?
-> **Answer:** "I am the Group Leader, and my individual technical component is **Module 05: Payment & Billing Management**. I developed the `Payment.java` domain model, the `PaymentServlet.java` controller, the `payments.jsp` user interface, and the revenue analytics logic in `DataService.java`, along with managing the Git repository and integrating my teammates' pull requests."
-
-### Q2: How did you implement Encapsulation in the Payment class?
-> **Answer:** "All fields such as `id`, `studentId`, `amount`, and `status` are declared `private` in `Payment.java`. I provided controlled public getters and setters. Specifically in `setAmount(double)`, I added defensive validation logic to ensure that zero or negative monetary values cannot be assigned to an invoice."
-
-### Q3: How is data stored without a relational database?
-> **Answer:** "We use flat-file persistence. In `data/payments.txt`, each transaction is stored as a pipe-delimited record:  
-> `PAY-5001|STU-1001|35000.0|2026-11-01|CARD|PAID`  
-> When the application loads, `FileHandler` reads the file line-by-line, parses the tokens, and instantiates `Payment` objects in memory."
-
-### Q4: Why is your branch named `payment-billing`?
-> **Answer:** "Following standard Git feature-branch workflow, each group member created an isolated feature branch named after their allocated coursework module. I developed and committed all payment features on `payment-billing`, verified its stability, and opened a Pull Request into `master` for clean integration."
-
----
-
-## 🌿 7. Pull Request & Branch Details
+## 🌿 6. Pull Request & Branch Details
 
 * **Author:** Weerakkody M.R.B (`IT26101059`)
 * **Email:** `IT26101059@my.sliit.lk`
