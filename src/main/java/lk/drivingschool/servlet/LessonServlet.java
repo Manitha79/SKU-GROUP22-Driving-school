@@ -10,11 +10,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Controller for Lesson Scheduling & FIFO Queue.
- * Member 2: Thanneliyadda T.L.K.S
- * Handles booking and processing of queue requests.
- */
+
 @WebServlet(urlPatterns = {"/lesson", "/lessons"})
 public class LessonServlet extends HttpServlet {
 
