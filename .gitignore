@@ -1,28 +1,6 @@
-# Compiled class file
-*.class
 
 # Maven build outputs
 target/
 *.war
 *.jar
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
 
-# Log file
-*.log
-*.tmp
-*.bak
-
-# IDE and Editor files
-.idea/
-*.iml
-.vscode/
-*.ipr
-*.iws
-
-# OS-generated files
-.DS_Store
-Thumbs.db
